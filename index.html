@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://aframe.io/releases/1.4.2/aframe.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/mind-ar@1.2.1/dist/mindar-image-aframe.prod.js"></script>
+
+    <script src="https://raw.githack.com/donmccurdy/aframe-extras/master/dist/aframe-extras.loaders.min.js"></script>
+
+    <script src="https://cdn.rawgit.com/donmccurdy/aframe-extras/v4.2.0/dist/aframe-extras.min.js"></script>
+
+    <title>ARサンプル｜画像</title>
+</head>
+
+<body>
+    <!-- 複数のマーカーを使う場合targets.mind を生成する際にあらかじめ画像をアップロードする -->
+    <a-scene mindar-image="imageTargetSrc: targets.mind; filterMinCF:0.001; filterBeta: 0.1" color-space="sRGB"
+        renderer="colorManagement: true, physicallyCorrectLights" vr-mode-ui="enabled: false"
+        device-orientation-permission-ui="enabled: false">
+
+        <a-assets>
+            <!-- 表示する画像のアセット -->
+            <img id="card" src="img01.jpg" />
+        </a-assets>
+
+        <a-camera position="0 0 0" look-controls="enabled: false"></a-camera>
+        <a-entity mindar-image-target="targetIndex: 0" position="0 0 0">
+            <!-- heightとwidthは画像サイズの縦横比と合わせて設定ください -->
+            <a-image src="#card" position="0 0 0" height="0.66" width="0.88" rotation="0 0 0"></a-image>
+        </a-entity>
+    </a-scene>
+
+</body>
+
+</html>
